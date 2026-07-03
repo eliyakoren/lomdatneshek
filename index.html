@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>לומדת נשק</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="app">
+    <section id="startScreen" class="start-screen">
+      <img class="start-logo" src="logoPumaM16.png" alt="לוגו" />
+
+      <div class="start-content">
+        <p class="start-small">ברוכים הבאים ל</p>
+
+        <h1 class="start-title">
+          <span>לומדת נשק</span>
+          <span class="muted">מבחן מסכם טירונות</span>
+        </h1>
+
+        <img class="start-image" src="startPic.png" alt="תמונה מרכזית" />
+
+        <button id="startQuizBtn" class="start-btn">התחל</button>
+      </div>
+    </section>
+
+    <section id="quizScreen" class="quiz-screen hidden">
+      <header id="quizHeader" class="topbar hidden">
+        <img class="logo" src="logoPumaM16.png" alt="לוגו" />
+
+        <div class="header-center">
+          <div class="progress-bar">
+            <div id="progressFill"></div>
+          </div>
+
+          <div class="counters">
+            <span id="questionCounter">0/0</span>
+            <span class="dot">•</span>
+            <span class="redo-icon">↻</span>
+            <span id="wrongCounter">0</span>
+          </div>
+        </div>
+      </header>
+
+      <section id="questionCard" class="card hidden">
+        <h1 id="questionText"></h1>
+        <p id="questionSubtext"></p>
+        <div id="answers" class="answers"></div>
+      </section>
+
+      <section id="endScreen" class="end-screen hidden">
+        <header id="endScreenHeader" class="topbar end-screen-header">
+          <img class="logo" src="logoPumaM16.png" alt= "לוגו" />
+        </header>
+        <h2>סיימת את כל השאלות</h2>
+        <p>כל הכבוד!</p>
+        <button id="restartQuizBtn" class="restart-btn">חזרה להתחלה</button>
+      </section>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
