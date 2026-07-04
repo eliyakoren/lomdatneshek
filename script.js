@@ -1,7 +1,7 @@
 const questions = [
   {
     question: "מהי בירת ישראל?",
-    answers: ["תל אביב", "ירושלים", "חיפה", "באר שבע"],
+    answers: ["תל אביב", "ירושלים", "חיפה", "באר שבע","אילת","דימונה","קריית שמונה","באר יעקוב"],
     correct: [1]
   },
   {
@@ -15,6 +15,7 @@ const questions = [
     correct: [0, 2, 3]
   }
 ];
+
 
 let queue = questions.map(q => ({ ...q, wasWrong: false, attempted: false }));
 let currentIndex = 0;
@@ -62,9 +63,17 @@ function setScreenTheme(screen) {
   }
 }
 
+function setOverflow(mode) {
+  document.documentElement.style.overflowX = "hidden";
+  document.body.style.overflowX = "hidden";
+  document.documentElement.style.overflowY = mode;
+  document.body.style.overflowY = mode;
+}
+
 startQuizBtn.addEventListener("click", () => {
   quizStarted = true;
   setScreenTheme("quiz");
+  setOverflow("auto");
 
   startScreen.classList.add("hidden");
   quizScreen.classList.remove("hidden");
@@ -85,6 +94,7 @@ restartQuizBtn.addEventListener("click", () => {
   quizStarted = false;
 
   setScreenTheme("start");
+  setOverflow("hidden");
 
   endScreen.classList.add("hidden");
   quizHeader.classList.add("hidden");
@@ -111,6 +121,7 @@ function renderQuestion() {
 
   if (queue.length === 0) {
     setScreenTheme("end");
+    setOverflow("hidden");
     quizHeader.classList.add("hidden");
     questionCard.classList.add("hidden");
     endScreen.classList.remove("hidden");
@@ -118,6 +129,7 @@ function renderQuestion() {
   }
 
   setScreenTheme("quiz");
+  setOverflow("auto");
   quizHeader.classList.remove("hidden");
   questionCard.classList.remove("hidden");
   endScreen.classList.add("hidden");
@@ -200,4 +212,5 @@ function selectAnswer(index, btn) {
 }
 
 setScreenTheme("start");
+setOverflow("hidden");
 updateHeader();
