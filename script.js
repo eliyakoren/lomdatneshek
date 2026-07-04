@@ -41,13 +41,37 @@ const els = {
   answers: document.getElementById("answers")
 };
 
+function setScreenTheme(screen) {
+  const body = document.body;
+
+  if (screen === "start") {
+    body.style.backgroundColor = "#ebebeb";
+    startScreen.style.backgroundColor = "#ebebeb";
+    quizScreen.style.backgroundColor = "#ebebeb";
+    endScreen.style.backgroundColor = "#ebebeb";
+  } else if (screen === "quiz") {
+    body.style.backgroundColor = "#f3f3f3";
+    startScreen.style.backgroundColor = "#f3f3f3";
+    quizScreen.style.backgroundColor = "#f3f3f3";
+    endScreen.style.backgroundColor = "#f3f3f3";
+  } else if (screen === "end") {
+    body.style.backgroundColor = "#ebebeb";
+    startScreen.style.backgroundColor = "#ebebeb";
+    quizScreen.style.backgroundColor = "#ebebeb";
+    endScreen.style.backgroundColor = "#ebebeb";
+  }
+}
+
 startQuizBtn.addEventListener("click", () => {
   quizStarted = true;
+  setScreenTheme("quiz");
+
   startScreen.classList.add("hidden");
   quizScreen.classList.remove("hidden");
   quizHeader.classList.remove("hidden");
   questionCard.classList.remove("hidden");
   endScreen.classList.add("hidden");
+
   renderQuestion();
 });
 
@@ -59,6 +83,8 @@ restartQuizBtn.addEventListener("click", () => {
   selectedAnswers = [];
   clearTimeout(advanceTimer);
   quizStarted = false;
+
+  setScreenTheme("start");
 
   endScreen.classList.add("hidden");
   quizHeader.classList.add("hidden");
@@ -84,12 +110,14 @@ function renderQuestion() {
   if (!quizStarted) return;
 
   if (queue.length === 0) {
+    setScreenTheme("end");
     quizHeader.classList.add("hidden");
     questionCard.classList.add("hidden");
     endScreen.classList.remove("hidden");
     return;
   }
 
+  setScreenTheme("quiz");
   quizHeader.classList.remove("hidden");
   questionCard.classList.remove("hidden");
   endScreen.classList.add("hidden");
@@ -171,4 +199,5 @@ function selectAnswer(index, btn) {
   }
 }
 
+setScreenTheme("start");
 updateHeader();
